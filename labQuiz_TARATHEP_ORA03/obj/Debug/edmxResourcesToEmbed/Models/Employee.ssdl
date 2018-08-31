@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="departments">
+    <Key>
+      <PropertyRef Name="dept_no" />
+    </Key>
+    <Property Name="dept_no" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dept_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title_name" Type="varchar" MaxLength="100" />
+    <Property Name="first_name" Type="varchar" MaxLength="150" />
+    <Property Name="last_name" Type="varchar" MaxLength="150" />
+    <Property Name="gender" Type="varchar" MaxLength="2" />
+    <Property Name="department" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="genders">
+    <Key>
+      <PropertyRef Name="gender_id" />
+    </Key>
+    <Property Name="gender_id" Type="int" Nullable="false" />
+    <Property Name="gender_name" Type="varchar" MaxLength="2" />
+    <Property Name="gender_description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="titles">
+    <Key>
+      <PropertyRef Name="title_id" />
+    </Key>
+    <Property Name="title_id" Type="int" Nullable="false" />
+    <Property Name="title_name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityContainer Name="EmployeeModelStoreContainer">
+    <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="genders" EntityType="Self.genders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="titles" EntityType="Self.titles" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

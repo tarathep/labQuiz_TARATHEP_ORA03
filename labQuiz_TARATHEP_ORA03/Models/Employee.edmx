@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmployeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="dept_no" />
+          </Key>
+          <Property Name="dept_no" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dept_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="emp_no" />
+          </Key>
+          <Property Name="emp_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title_name" Type="varchar" MaxLength="100" />
+          <Property Name="first_name" Type="varchar" MaxLength="150" />
+          <Property Name="last_name" Type="varchar" MaxLength="150" />
+          <Property Name="gender" Type="varchar" MaxLength="2" />
+          <Property Name="department" Type="varchar" MaxLength="50" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="genders">
+          <Key>
+            <PropertyRef Name="gender_id" />
+          </Key>
+          <Property Name="gender_id" Type="int" Nullable="false" />
+          <Property Name="gender_name" Type="varchar" MaxLength="2" />
+          <Property Name="gender_description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="titles">
+          <Key>
+            <PropertyRef Name="title_id" />
+          </Key>
+          <Property Name="title_id" Type="int" Nullable="false" />
+          <Property Name="title_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="EmployeeModelStoreContainer">
+          <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genders" EntityType="Self.genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="titles" EntityType="Self.titles" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="dept_no" />
+          </Key>
+          <Property Name="dept_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dept_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="emp_no" />
+          </Key>
+          <Property Name="emp_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="gender_id" />
+          </Key>
+          <Property Name="gender_id" Type="Int32" Nullable="false" />
+          <Property Name="gender_name" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="gender_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="title">
+          <Key>
+            <PropertyRef Name="title_id" />
+          </Key>
+          <Property Name="title_id" Type="Int32" Nullable="false" />
+          <Property Name="title_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EmployeeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="departments" EntityType="Self.department" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="genders" EntityType="Self.gender" />
+          <EntitySet Name="titles" EntityType="Self.title" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeModelStoreContainer" CdmEntityContainer="EmployeeEntities">
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="EmployeeModel.department">
+              <MappingFragment StoreEntitySet="departments">
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="EmployeeModel.employee">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+                <ScalarProperty Name="title_name" ColumnName="title_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genders">
+            <EntityTypeMapping TypeName="EmployeeModel.gender">
+              <MappingFragment StoreEntitySet="genders">
+                <ScalarProperty Name="gender_id" ColumnName="gender_id" />
+                <ScalarProperty Name="gender_name" ColumnName="gender_name" />
+                <ScalarProperty Name="gender_description" ColumnName="gender_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="titles">
+            <EntityTypeMapping TypeName="EmployeeModel.title">
+              <MappingFragment StoreEntitySet="titles">
+                <ScalarProperty Name="title_id" ColumnName="title_id" />
+                <ScalarProperty Name="title_name" ColumnName="title_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

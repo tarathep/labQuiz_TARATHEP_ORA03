@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmployeeModelStoreContainer" CdmEntityContainer="EmployeeEntities">
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="EmployeeModel.department">
+        <MappingFragment StoreEntitySet="departments">
+          <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+          <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="EmployeeModel.employee">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="title_name" ColumnName="title_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genders">
+      <EntityTypeMapping TypeName="EmployeeModel.gender">
+        <MappingFragment StoreEntitySet="genders">
+          <ScalarProperty Name="gender_id" ColumnName="gender_id" />
+          <ScalarProperty Name="gender_name" ColumnName="gender_name" />
+          <ScalarProperty Name="gender_description" ColumnName="gender_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="titles">
+      <EntityTypeMapping TypeName="EmployeeModel.title">
+        <MappingFragment StoreEntitySet="titles">
+          <ScalarProperty Name="title_id" ColumnName="title_id" />
+          <ScalarProperty Name="title_name" ColumnName="title_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
